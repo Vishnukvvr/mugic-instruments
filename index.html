@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mugic</title>
+    <style>
+        body{
+            background-image: url(mugic.jpg);
+            background-size: cover; 
+  background-repeat: repeat; 
+  background-position: center; 
+        }
+        h1{
+            font-family: sans-serif;
+            text-align: center;
+            color: rgb(245, 117, 43);
+
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .image-box {
+            padding: 20px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            object-fit: cover;
+        }
+        h2{
+    text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>MUGIC INSTRUMENTS</h1>
+    <div class="image-container">
+        <div class="image-box" >
+            <img src="drum.jpg" alt="drum">
+            <p>Drum</p>
+        </div>
+        <div class="image-box">
+            <img src="flute.jpg" alt="flute">
+            <p>Flute</p>
+        </div>
+        <div class="image-box">
+            <img src="guitar.jpg" alt="guitar">
+            <p>Guitar</p>
+        </div>
+        <div class="image-box">
+            <img src="harp.jpg" alt="harp">
+            <p>Harp</p>
+        </div>
+        <div class="image-box">
+            <img src="keybosrd instrument.jpg" alt="keyboard">
+            <p>keyboard</p>
+        </div>
+        <div class="image-box">
+            <img src="piano.jpg" alt="piano">
+            <p>piango</p>
+        </div>
+    </div>
+    <div>
+        <h2>Enjoy the mugic</h2>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const instruments = {
+        'drum': 'drum.wav',
+        'flute': 'flute.wav',
+        'guitar': 'guitar.wav',
+        'harp': 'harp.wav',
+        'keyboard': 'keyboard.wav',
+        'piano': 'piano.mp3'
+    };
+
+    const instrumentNames = {
+        'drum': 'Drum',
+        'flute': 'Flute',
+        'guitar': 'Guitar',
+        'harp': 'Harp',
+        'keyboard': 'Keyboard',
+        'piano': 'Piano'
+    };
+
+    const imageBoxes = document.querySelectorAll('.image-box');
+    const h2Element = document.querySelector('h2');
+
+    imageBoxes.forEach(box => {
+        box.addEventListener('click', function() {
+            const instrument = box.querySelector('img').alt.toLowerCase();
+            if (instruments[instrument]) {
+                h2Element.innerText = `${instrumentNames[instrument]} is playing`;
+
+                let audio = new Audio(instruments[instrument]);
+                audio.play();
+            }
+        });
+    });
+});
+
+    </script>
+   
+</body>
+</html>
